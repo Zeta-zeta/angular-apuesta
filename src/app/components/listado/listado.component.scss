@@ -1,0 +1,143 @@
+/* Contenedor principal centrado */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Contenedor con márgenes y altura */
+.contenedor {
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilo de la carta */
+.carta {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Título */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(197, 196, 196);
+  margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas */
+.label {
+  color: #ffffff;
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+/* Estilo del input */
+.input {
+  background-color: #fdf4f4;
+  border: 1px solid #444;
+  color: #040404;
+  padding: 10px;
+  font-size: 1rem;
+  width: 85%;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Estilo del botón */
+.button {
+  background-color: #ff0000;
+  border: none;
+  font-weight: bold;
+  color: #ffffff;
+  align-items: center;
+
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #ff3333;
+}
+
+/* Estilo de la lista de sugerencias */
+.autocomplete-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+
+  border-radius: 5px;
+}
+
+.autocomplete-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f5f5f5;  /* Fondo claro cuando pasas el ratón */
+  color: #333;  /* Color de texto más oscuro al pasar el ratón */
+}
+
+/* Estilo de la tabla */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+  background-color: #444;
+  color: #fff;
+}
+
+.user-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Mensaje de no resultados */
+.no-results {
+  color: #ff0000;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilo de los enlaces */
+.registrate {
+  text-decoration: underline;
+  text-decoration-color: rgb(27, 27, 28);
+  color: #ff0000c8;
+}
+
+.search-input-container {
+  display: flex;
+  justify-content: space-between; /* Asegura que el input y el botón estén separados */
+
+}
+
+.user-table {
+  pointer-events: none;  /* Deshabilitar la interacción con la tabla */
+}
+
+input[disabled] {
+  background-color: #e0e0e0;  /* Color de fondo cuando el input está deshabilitado */
+  color: #aaa;  /* Color del texto cuando el input está deshabilitado */
+  cursor: not-allowed;  /* Cursor que indica que no se puede interactuar con el input */
+}

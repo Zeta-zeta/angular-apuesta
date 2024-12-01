@@ -1,0 +1,143 @@
+<div>
+<div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="container img">
+    <div class="carousel-inner img">
+      <div class="carousel-item active" *ngIf="hayPartidosProximos(); else noPartidos">
+        <img src="/img/partido1.png" class="d-block w-100" alt="Proximo Partido" />
+        <div class="carousel-caption d-none d-md-block h5">
+          <h5>Próximo Partido: {{ partidosProximos[0].idEquipoLocal.nombre }} vs {{ partidosProximos[0].idEquipoVisitante.nombre }}</h5>
+        </div>
+      </div>
+      <ng-template #noPartidos>
+        <div class="carousel-item active">
+          <img src="/img/partido1.png" class="d-block w-100" alt="No hay próximos partidos" />
+          <div class="carousel-caption d-none d-md-block h5">
+            <h5>No hay próximos partidos</h5>
+          </div>
+        </div>
+      </ng-template>
+      <div class="carousel-item">
+        <img src="/img/partido2.png" class="d-block w-100" alt="Partido 2" />
+        <div class="carousel-caption d-none d-md-block h5">
+          <h5>¡Apuesta Ya y Gana!</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/img/partido3.png" class="d-block w-100" alt="Partido 3" />
+        <div class="carousel-caption d-none d-md-block h5">
+          <h5>Resultados en Vivo</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev controlprev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon prev" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next controlnext" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon next" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Partidos En vivo -->
+<section class="live-matches py-5">
+  <div class="container">
+    <h2 class="text-center mb-4"><b>Partidos en Vivo</b></h2>
+    <div class="row" *ngIf="partidosEnVivo.length>0; else noPartidosEnVivo">
+      <div *ngFor="let partido of partidosEnVivo" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="overlay">
+            <div class="teamInfo">
+              <img class="escudos"  alt="Logo Equipo A" />
+              <span class="vsText">vs</span>
+              <img class="escudos"  alt="Logo Equipo B" />
+            </div>
+          </div>
+          <img src="/img/fondo.png" class="card-img-top" alt="Equipo A vs Equipo B" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ partido.idEquipoLocal.nombre }} vs {{ partido.idEquipoVisitante.nombre }}</h5>
+            <p class="card-text">
+              <span class="badge bg-success">EN VIVO</span>
+            </p>
+            <a [routerLink]="['/apostar', partido.id]" class="btn btn-danger" [class.disabled]="partido.estado === 'Terminado'">APOSTAR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPartidosEnVivo>
+      <div class="text-center">
+        <h5>No hay partidos en vivo</h5>
+      </div>
+    </ng-template>
+  </div>
+</section>
+
+<!-- Partidos Próximos -->
+<section class="upcoming-matches py-5">
+  <div class="container">
+    <h2 class="text-center mb-4"><b>Próximos Partidos</b></h2>
+    <div class="row" *ngIf="partidosProximos.length > 0 ; else noPartidosPendientes">
+      <div *ngFor="let partido of partidosProximos" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="overlay">
+            <div class="teamInfo">
+              <img class="escudos" alt="Logo Equipo Local" />
+              <span class="vsText">vs</span>
+              <img class="escudos" alt="Logo Equipo Visitante" />
+            </div>
+          </div>
+          <img src="/img/fondo.png" class="card-img-top" alt="Equipo A vs Equipo B" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ partido.idEquipoLocal.nombre }} vs {{ partido.idEquipoVisitante.nombre }}</h5>
+            <p class="card-text">
+              <span class="badge bg-warning">PRÓXIMO</span>
+            </p>
+            <a [routerLink]="['/apostar', partido.id]" class="btn btn-danger">APOSTAR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPartidosPendientes>
+      <div class="text-center">
+        <h5>No hay partidos pendientes</h5>
+      </div>
+    </ng-template>
+  </div>
+</section>
+
+<!-- Partidos Terminados -->
+ <!-- [src]="partido.idEquipoVisitante.logo"  Para colocar la imagen -->
+<section class="finished-matches py-5">
+  <div class="container">
+    <h2 class="text-center mb-4"><b>Partidos Terminados</b></h2>
+    <div class="row">
+      <div *ngFor="let partido of partidosTerminados" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="overlay">
+            <div class="teamInfo">
+              <img class="escudos" alt="Logo Equipo Local" />
+              <span class="vsText">vs</span>
+              <img class="escudos" alt="Logo Equipo Visitante" />
+            </div>
+          </div>
+          <img src="/img/fondo.png" class="card-img-top" alt="Equipo A vs Equipo B" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ partido.idEquipoLocal.nombre }} vs {{ partido.idEquipoVisitante.nombre }}</h5>
+            <p class="card-text">
+              <span class="badge bg-secondary">TERMINADO</span>
+            </p>
+            <a class="btn btn-dark" [attr.disabled]="partido.estado === 'Terminado' ? true : null">APOSTAR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</div>

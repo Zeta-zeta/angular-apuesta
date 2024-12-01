@@ -1,0 +1,32 @@
+<div>
+  <div class="container">
+    <h1 class="titulo">Definir Resultado del Partido</h1>
+    <form [formGroup]="resultadoForm" (ngSubmit)="onSubmit()">
+      <div class="team-scores">
+        <div class="team-input">
+          <label for="golesLocal">{{ equipoLocalNombre }}</label>
+          <input
+            id="golesLocal"
+            formControlName="golesLocal"
+            type="number"
+            min="0"
+            (input)="validateNumber($event)"
+          />
+        </div>
+
+        <div class="team-input">
+          <label for="golesVisitante">{{ equipoVisitanteNombre }}</label>
+          <input
+            id="golesVisitante"
+            formControlName="golesVisitante"
+            type="number"
+            min="0"
+            (input)="validateNumber($event)"
+          />
+        </div>
+      </div>
+
+      <button type="submit">Guardar Resultado</button>
+    </form>
+  </div>
+</div>

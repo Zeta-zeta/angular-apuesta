@@ -1,0 +1,116 @@
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .matches .card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .matches .card:hover {
+    transform: scale(1.05);
+  }
+
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .escudos{
+    width: 140px;            /* Ancho de la imagen */
+    height: 70px;            /* Ajuste automático de la altura */
+
+
+  }
+
+  .fondo{
+    height: 110px;
+    background: rgba(0, 0, 0, 0.6); /* Optional, for better text visibility */
+    filter: brightness(50%); /* Reduce el brillo al 50% */
+    transition: filter 0.3s ease-in-out; /* Transición suave */
+  }
+  .card-img-top {
+    height: 140px;
+    object-fit: cover;
+    filter: brightness(70%);
+    transition: filter 0.3s ease-in-out;
+  }
+
+  .card:hover .card-img-top {
+    filter: brightness(100%); /* Cambia el valor para iluminar la imagen */
+  }
+
+  .teamName {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+
+  .vsText {
+    margin: 0 8px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none; /* Ensure that clicks pass through to the underlying elements */
+  }
+
+  .teamInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: -135px;
+  }
+
+  .apostar{
+    background-color: hwb(180 8% 91% / 0.896);
+    border-color: black;
+  }
+
+  a[disabled]{
+    cursor: not-allowed;
+    background-color: hwb(180 22% 74% / 0.896);
+    border-color: hwb(180 22% 74% / 0.896);
+  }
+
+  .message {
+    color: rgb(0, 0, 0);
+    font-size: 1.125em;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #55555588;
+  }
+
+  .card{
+
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+  .po{
+    background-color: #ffffff;
+  }
+

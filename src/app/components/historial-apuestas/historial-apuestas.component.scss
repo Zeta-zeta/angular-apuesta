@@ -1,0 +1,112 @@
+.banner {
+  background-color: #f8f9fa; /* Fondo claro */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalles {
+  border-bottom: 1px solid #dee2e6; /* Línea divisoria */
+  padding-bottom: 0.5rem;
+}
+
+.equipo {
+  display: flex;
+  align-items: center;
+
+}
+
+.apuesta span{
+  margin-top: 0.5rem;
+  color: var(--secundario);
+  font-weight: normal;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  border-radius: 0.5rem;
+  width: 170px;
+}
+
+.logo2 {
+  border-radius: 0.5rem;
+  width: 130px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.name {
+  font-size: 16px;
+}
+
+.score {
+  font-size: 1.5rem;
+  color: #343a40;
+}
+
+.versus {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+.matchinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matchdate {
+  font-weight: bold;
+  color: #020202;
+}
+
+.matchresult {
+  margin-top: 0.5rem;
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.winner, .loser {
+  display: block;
+}
+
+.winner {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.loser {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+
+.apuestacont{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+
+//.proximo-partido {
+//  background-color: #c6ddea; /* Color amarillo claro para partidos próximos */
+//}
+
+.terminado-partido {
+  background-color: #e7f3c5; /* Color verde claro para partidos terminados */
+}

@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <div *ngIf="successMessage" class="success-message message">
+      <p>{{ successMessage }}. Serás redirigido en {{ counter }} segundos...</p>
+  </div>
+
+  <div class="row align-items-center contender">
+      <div class="col-lg-6 text-center">
+          <img src="/img/logo.png" alt="Logo" class="img-fluid" />
+      </div>
+      <div class="col-lg-6">
+          <div class="card shadow-lg border-0">
+              <div class="card-body carta">
+                  <h2 class="card-title text-center title">Crear Partido</h2>
+                  <form (ngSubmit)="onSubmit()" #partidoForm="ngForm">
+                      <div class="form-group">
+                          <label for="equipoLocal" class="label">Equipo Local</label>
+                          <select
+                              class="form-control"
+                              id="equipoLocal"
+                              [(ngModel)]="formData.equipoLocal"
+                              (change)="onEquipoLocalChange($event)"
+                              name="equipoLocal"
+                              required
+                          >
+                              <option value="" disabled selected>Seleccione el equipo local</option>
+                              <option *ngFor="let equipo of equipos" [value]="equipo.id" [ngClass]="{'desactivado': equipo.disabled}" [disabled]="equipo.disabled">
+                                  {{ equipo.nombre }}
+                              </option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="equipoVisitante" class="label">Equipo Visitante</label>
+                          <select
+                              class="form-control"
+                              id="equipoVisitante"
+                              [(ngModel)]="formData.equipoVisitante"
+                              (change)="onEquipoVisitanteChange($event)"
+                              name="equipoVisitante"
+                              required
+                          >
+                              <option value="" disabled selected>Seleccione el equipo visitante</option>
+                              <option *ngFor="let equipo of equipos" [value]="equipo.id" [ngClass]="{'desactivado': equipo.disabled}" [disabled]="equipo.disabled">
+                                  {{ equipo.nombre }}
+                              </option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="fechaPartido" class="label">Fecha del Partido</label>
+                          <input
+                              type="date"
+                              class="form-control fetch"
+                              id="fechaPartido"
+                              [(ngModel)]="formData.fechaPartido"
+                              name="fechaPartido"
+                              required
+                          />
+                          <div *ngIf="!formData.fechaPartido && submitted" class="invalid-feedback">
+                              Fecha del partido es requerida.
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="horaPartido" class="label">Hora del Partido</label>
+                          <input
+                              type="time"
+                              class="form-control input"
+                              id="horaPartido"
+                              [(ngModel)]="formData.horaPartido"
+                              name="horaPartido"
+                              required
+                          />
+                          <div *ngIf="!formData.horaPartido && submitted" class="invalid-feedback">
+                              Hora del partido es requerida.
+                          </div>
+                      </div>
+
+                      <button type="submit" class="btn btn-dark btn-block button">
+                          Crear Partido
+                      </button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+

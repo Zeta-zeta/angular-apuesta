@@ -1,0 +1,124 @@
+<div class="container mt-5">
+  <div *ngIf="successMessage" class="success-message message">
+    <p>{{ successMessage }}. Serás redirigido en {{ counter }} segundos...</p>
+  </div>
+
+  <div class="row align-items-center container">
+    <div class="col-lg-6 text-center">
+      <img src="/img/logo.png" alt="Model" class="img-fluid image" />
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0 card">
+        <div class="card-body">
+          <h2 class="card-title text-center title">Regístrate Ya</h2>
+          <form
+            (ngSubmit)="enviarData()"
+            #formulario="ngForm"
+          >
+           <div class="form-group">
+            <label for="nombre" class="label">Dni</label>
+            <input
+              type="text"
+              class="form-control input"
+              id="dni"
+              [(ngModel)]="formData.dni"
+              name="dni"
+              placeholder="Ingrese Dni del usuario"
+              required
+            />
+            </div>
+
+
+            <div class="form-group">
+              <label for="nombre" class="label">Nombre</label>
+              <input
+                type="text"
+                class="form-control input"
+                id="nombre"
+                [(ngModel)]="formData.nombre"
+                name="nombre"
+                placeholder="Ingrese un nombre de usuario"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="fechanac" class="label">Fecha de Nacimiento</label>
+              <input
+                type="date"
+                class="form-control fetch"
+                id="fechanac"
+                [(ngModel)]="formData.fechaNacimiento"
+                name="fechaNacimiento"
+                (change)="manejarCambioFecha($event)"
+                required
+              />
+              <div *ngIf="errorFechaNacimiento" class="invalid-feedback">
+                {{ errorFechaNacimiento }}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="label">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-control input"
+                id="email"
+                [(ngModel)]="formData.email"
+                name="email"
+                placeholder="Ingrese su correo electrónico"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="label">Contraseña</label>
+              <div class="input-group">
+                <!--(change)="manejarCambioContrasena($event)"-->
+                <input
+                  type="{{ mostrarPassword ? 'text' : 'password' }}"
+                  class="form-control input"
+                  id="password"
+                  [(ngModel)]="contrasena"
+                  name="password"
+
+                  required
+                />
+                <button class="btn btn-outline-secondary" type="button" (click)="mostrarPassword = !mostrarPassword">
+                    <i class="bi" [ngClass]="mostrarPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
+                  </button>
+              </div>
+              <div *ngIf="errorContrasena" class="invalid-feedback">
+                {{ errorContrasena }}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmarPassword" class="label">Confirmar Contraseña</label>
+              <div class="input-group">
+                 <!--(change)="manejarCambioConfirmarContrasena($event)"-->
+                <input
+                  type="{{ mostrarConfirmarPassword ? 'text' : 'password' }}"
+                  class="form-control input"
+                  id="confirmarPassword"
+
+                  [(ngModel)]="confirmarContrasena"
+                  name="confirmarPassword"
+                  required
+                />
+                <button class="btn btn-outline-secondary" type="button" (click)="mostrarConfirmarPassword = !mostrarConfirmarPassword">
+                  <i class="bi" [ngClass]="mostrarConfirmarPassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-block button" [disabled]="formulario.invalid">
+              Registrarte
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,48 @@
+.contenedor {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e;
+ margin-top: 110px;
+}
+.titulo {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(197, 196, 196);
+}
+
+
+.label {
+  color: #ffffff;
+
+}
+
+.message {
+  color: rgb(0, 0, 0);
+  font-size: 1.125em;
+  margin-top: -46px;
+  margin-bottom: -75px;
+  text-align: center;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #55555588;
+}
+
+.button {
+  background-color: #ff0000;
+  border: none;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-left: 180px;
+  font-size: 20px;
+
+}
+
+.button:hover {
+  background-color: #ff3333;
+}

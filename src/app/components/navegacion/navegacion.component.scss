@@ -1,0 +1,40 @@
+.navbar {
+  margin-bottom: 56px; /* Asegúrate de que el contenido no quede cubierto por el navbar */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.img {
+  width: 65px; /* Ancho de la imagen */
+  height: auto; /* Ajuste automático de la altura */
+  border-radius: 0px; /* Bordes redondeados */
+}
+
+.logo {
+  font-size: 18px;
+}
+
+.hola {
+  padding-left: 0px;
+  margin-left: -15px;
+}
+
+.button {
+  text-decoration: underline;
+  text-decoration-color: rgb(204, 64, 64);
+}
+
+.button2 {
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.648);
+  color: #ffffff !important;
+}
+
+.mibilletera {
+  text-decoration: underline;
+  text-decoration-color: rgb(36, 36, 37) !important;
+  color: #ffffffc8 !important;
+}

@@ -1,0 +1,31 @@
+.card {
+  background-color: #f8f9fa; /* Fondo claro */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  height: 200px;
+}
+
+.logo {
+  border-radius: 0.5rem;
+  width: 115px;
+  height: auto;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #343a40;
+}
+
+.country, .founded, .owner {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-top: 0.5rem;
+}

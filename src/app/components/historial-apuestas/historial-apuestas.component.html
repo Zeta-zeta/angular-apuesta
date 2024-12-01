@@ -1,0 +1,99 @@
+<div>
+  <h1 class="titulo">Historial de Apuestas</h1>
+  <div class="container mt-5">
+    <div class="apuestacont">
+      <div *ngFor="let apuesta of listaApuestas" class="match-banner banner" [ngClass]="{
+        'proximo-partido': apuesta.idPartido.estado === 'Proximo',
+        'terminado-partido': apuesta.idPartido.estado === 'Terminado'
+      }">
+
+        <!-- Verificar si el partido ha terminado -->
+        <div *ngIf="apuesta.idPartido.estado === 'Terminado'; else partidoEnProgreso">
+          <div class="match-status mt-3 apuesta">
+            <span *ngIf="apuesta.resultado"><b>APUESTA GANADA</b></span>
+            <span *ngIf="!apuesta.resultado"><b>APUESTA PERDIDA</b></span>
+          </div>
+
+          <div class="match-details d-flex align-items-center justify-content-center detalles">
+            <!-- Equipo Local -->
+            <div class="team team-1 d-flex align-items-center equipo">
+              <span class="winner" *ngIf="apuesta.idPartido.idEquipoGanador === apuesta.idPartido.idEquipoLocal.id">Ganador</span>
+              <span class="loser" *ngIf="apuesta.idPartido.idEquipoGanador !== apuesta.idPartido.idEquipoLocal.id">Perdedor</span>
+              <img src="/img/barcelona.png" alt="Equipo Local" class="team-logo logo" />
+              <div class="team-info ms-2 info">
+                <span class="team-name name"><b>{{ apuesta.idPartido.idEquipoLocal.nombre }}</b></span>
+                <span class="score score">{{ apuesta.idPartido.golesLocal }}</span>
+              </div>
+            </div>
+
+            <div class="vs mx-3 versus">
+              <span>vs</span>
+            </div>
+
+            <!-- Equipo Visitante -->
+            <div class="team team-2 d-flex align-items-center equipo">
+              <div class="team-info me-2 info">
+                <span class="team-name name"><b>{{ apuesta.idPartido.idEquipoVisitante.nombre }}</b></span>
+                <span class="score score">{{ apuesta.idPartido.golesVisitante }}</span>
+              </div>
+              <img src="/img/barcelona.png" alt="Equipo Visitante" class="team-logo logo" />
+              <span class="winner" *ngIf="apuesta.idPartido.idEquipoGanador === apuesta.idPartido.idEquipoVisitante.id">Ganador</span>
+              <span class="loser" *ngIf="apuesta.idPartido.idEquipoGanador !== apuesta.idPartido.idEquipoVisitante.id">Perdedor</span>
+            </div>
+          </div>
+
+          <div class="match-info mt-3 matchinfo">
+            <span class="match-date matchdate">{{ apuesta.fecha }}</span>
+            <span class="match-result matchresult">
+              <span class="resultado"><b>Equipo Apostado:</b> {{ apuesta.idEquipoApuesta === apuesta.idPartido.idEquipoLocal.id ? apuesta.idPartido.idEquipoLocal.nombre : apuesta.idPartido.idEquipoVisitante.nombre }}</span><br />
+              <span class="resultado"><b>Estado de la Apuesta:</b> {{ apuesta.resultado ? 'Ganado' : 'Perdido' }}</span><br />
+
+              <span class="resultado"><b>Monto Apostado:</b> s/{{ apuesta.montoApuesta }}</span><br />
+
+              <span class="resultado">
+                <b>{{ apuesta.resultado ? 'Ganancia Total:' : 'Pérdida Total:' }}</b>
+                s/{{ apuesta.resultado ? apuesta.montoApuesta * 1.5 : -apuesta.montoApuesta }}
+              </span><br />
+          </span>
+          </div>
+        </div>
+
+        <!-- Plantilla alternativa para partidos en progreso -->
+        <ng-template #partidoEnProgreso>
+          <div class="match-status mt-3 apuesta">
+            <span><b>PARTIDO EN PROGRESO</b></span>
+          </div>
+          <div class="match-details d-flex align-items-center justify-content-center detalles">
+            <!-- Información del partido en progreso -->
+            <div class="team team-1 d-flex align-items-center equipo">
+              <img src="/img/barcelona.png" alt="Equipo Local" class="team-logo logo" />
+              <div class="team-info ms-2 info">
+                <span class="team-name name"><b>{{ apuesta.idPartido.idEquipoLocal.nombre }}</b></span>
+              </div>
+            </div>
+
+            <div class="vs mx-3 versus">
+              <span>vs</span>
+            </div>
+
+            <div class="team team-2 d-flex align-items-center equipo">
+              <div class="team-info me-2 info">
+                <span class="team-name name"><b>{{ apuesta.idPartido.idEquipoVisitante.nombre }}</b></span>
+              </div>
+              <img src="/img/barcelona.png" alt="Equipo Visitante" class="team-logo logo" />
+            </div>
+          </div>
+
+          <div class="match-info mt-3 matchinfo">
+            <span class="match-date matchdate">{{ apuesta.fecha }}</span>
+            <span class="match-result matchresult">
+
+              <span class="resultado"><b>Monto Apostado:</b> s/{{ apuesta.montoApuesta }}</span><br />
+            </span>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>

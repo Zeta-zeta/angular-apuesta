@@ -1,0 +1,71 @@
+.container{
+    margin-top: 90px;
+    margin-left: 80px;
+    margin-right: 120px;
+
+}
+.card {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    color: #ffffff;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(197, 196, 196);
+  }
+
+  .label {
+    color: #ffffff;
+    margin-top: 15px;
+  }
+
+  .input {
+    background-color: #ffffff;
+    border: 1px solid #444;
+    color: #000000;
+
+  }
+
+  .fetch {
+    background-color: #ffffff;
+    border: 1px solid #444;
+    color: #000000;
+
+  }
+
+  .button {
+    background-color: #ff0000;
+    border: none;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-left: 225px;
+    font-size: 22px;
+
+  }
+
+  .button:hover {
+    background-color: #ff3333;
+  }
+
+  .message {
+    color: rgb(0, 0, 0);
+    font-size: 1.125em;
+    margin-top: -46px;
+    margin-bottom: -75px;
+    margin-left: 500px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #55555588;
+  }
+
+  .invalid-feedback {
+    color: #dc3545;  // Color rojo para el error
+    display: block;  // Asegura que se muestre como bloque
+    margin-top: 5px;  // Espacio entre el campo y el mensaje de error
+    font-size: 0.875em;  // Tamaño de fuente ligeramente reducido
+  }

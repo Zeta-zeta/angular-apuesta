@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Apostar en el Partido</h2>
+
+    <form [formGroup]="apuestaForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="equipoApuesta">Selecciona tu Apuesta</label>
+        <select
+          class="form-control"
+          id="equipoApuesta"
+          formControlName="equipoApuesta"
+          required
+        >
+          <option value="" disabled selected>Seleccione el equipo para apostar</option>
+          <option *ngFor="let equipo of equipos" [ngValue]="equipo">
+            {{ equipo.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="montoApuesta">Monto de la Apuesta</label>
+        <input
+          type="number"
+          class="form-control"
+          id="montoApuesta"
+          formControlName="montoApuesta"
+          placeholder="Ingrese el monto"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="apuestaForm.invalid">
+        Realizar Apuesta
+      </button>
+    </form>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+  </div>

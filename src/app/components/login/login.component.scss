@@ -1,0 +1,50 @@
+.contenedor{
+  margin-top: 150px;
+  margin-left:80px;
+  margin-right: 120px;
+
+}
+.carta {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  color: #ffffff;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(197, 196, 196);
+}
+
+.label {
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+.input {
+  background-color: #fdf4f4;
+  border: 1px solid #444;
+  color: #040404;
+
+}
+
+.button {
+  background-color: #ff0000;
+  border: none;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-left: 190px;
+  font-size: 20px;
+
+}
+
+.button:hover {
+  background-color: #ff3333;
+}
+
+.registrate{
+  text-decoration: underline;
+  text-decoration-color: rgb(27, 27, 28);
+  color: #ff0000c8;
+}

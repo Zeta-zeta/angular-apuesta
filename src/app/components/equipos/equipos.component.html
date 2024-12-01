@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let equipo of listaEquipos">
+      <div class="team-info-card card">
+        <div class="team-info-header d-flex align-items-center">
+          <!-- implementar cuando tenga imagenes [src]="equipo.logo"-->
+          <img alt="Equipo" class="team-logo logo" />
+          <div class="team-details ms-3 details">
+            <span class="team-name name">{{ equipo.nombre }}</span>
+            <span class="team-country country">País: {{ equipo.pais }}</span>
+            <span class="team-founded founded">Fundado: {{ equipo.fechaFundacion }}</span>
+            <span class="team-owner owner">Presidente: {{ equipo.presidente }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

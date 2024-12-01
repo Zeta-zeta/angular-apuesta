@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div *ngIf="successMessage" class="success-message message">
+    <p>{{ successMessage }}. Serás redirigido en {{ counter }} segundos...</p>
+  </div>
+
+  <div class="row align-items-center contender">
+    <div class="col-lg-6 text-center">
+      <img src="/img/logo.png" alt="Logo" class="img-fluid" />
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-body carta">
+          <h2 class="card-title text-center title">Registrar Equipo</h2>
+          <form [formGroup]="equipoForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="nombre" class="label">Nombre</label>
+              <input type="text" id="nombre" class="form-control input" formControlName="nombre" placeholder="Ingrese el nombre del Equipo">
+              <div *ngIf="submitted && equipoForm.get('nombre')?.invalid" class="invalid-feedback">
+                El nombre es obligatorio.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pais" class="label">País</label>
+              <input type="text" placeholder="Ingrese el Pais del equipo" id="pais" class="form-control input" formControlName="pais">
+              <div *ngIf="submitted && equipoForm.get('pais')?.invalid" class="invalid-feedback">
+                El país es obligatorio.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fechaFundacion" class="label">Fecha de Fundación</label>
+              <input type="date" id="fechaFundacion" class="form-control input" formControlName="fechaFundacion">
+              <div *ngIf="submitted && equipoForm.get('fechaFundacion')?.invalid" class="invalid-feedback">
+                La fecha de fundación es obligatoria.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="presidente" class="label">Presidente</label>
+              <input type="text" id="presidente" class="form-control input" formControlName="presidente" placeholder="Ingrese el nombre del presidente del equipo">
+              <div *ngIf="submitted && equipoForm.get('presidente')?.invalid" class="invalid-feedback">
+                El nombre del presidente es obligatorio.
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-block button">
+              Registrar Equipo
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

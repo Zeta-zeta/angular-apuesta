@@ -1,0 +1,116 @@
+<section class="live-matches py-5">
+    <div class="container">
+      <h2 class="text-center mb-4"><b>Partidos en Vivo</b></h2>
+      <div class="row" *ngIf="partidosEnVivo.length > 0; else noPartidosEnVivo">
+        <div *ngFor="let partido of partidosEnVivo" class="match-banner">
+          <div class="card match-banner">
+            <div class="overlay">
+              <div class="teamInfo">
+                <img
+                  class="escudos"
+                  alt="Logo {{ partido.idEquipoLocal.nombre }}"
+                />
+                <span class="vsText">vs</span>
+                <img
+                  class="escudos"
+                  alt="Logo {{ partido.idEquipoVisitante.nombre }}"
+                />
+              </div>
+            </div>
+            <img
+              src="/img/fondo.png"
+              class="card-img-top"
+              alt="Imagen del partido"
+            />
+            <div class="card-body text-center">
+              <h3 class="card-title">
+                {{ partido.idEquipoLocal.nombre }} vs
+                {{ partido.idEquipoVisitante.nombre }}
+              </h3>
+              <p class="card-text">
+                <span class="badge bg-success">EN VIVO</span>
+              </p>
+              <a
+                (click)="definirResultado(partido.id)"
+                class="btn btn-danger"
+                [class.disabled]="partido.estado === 'Terminado'"
+                >Definir Resultado</a
+              >
+            </div>
+
+          </div>
+          <div class="po">
+            <p class="po">                                                                                                            .</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <ng-template #noPartidosEnVivo>
+        <div class="text-center">
+          <h5>No hay partidos en vivo</h5>
+        </div>
+      </ng-template>
+    </div>
+
+</section>
+
+<section class="upcoming-matches py-5">
+
+    <div class="container">
+      <h2 class="text-center mb-4"><b>Próximos Partidos</b></h2>
+      <div
+        class="row"
+        *ngIf="partidosProximos.length > 0; else noPartidosPendientes"
+      >
+        <div *ngFor="let partido of partidosProximos" class="match-banner">
+          <div class="card match-banner">
+            <div class="overlay">
+              <div class="teamInfo">
+                <img
+                  class="escudos"
+                  alt="Logo {{ partido.idEquipoLocal.nombre }}"
+                />
+                <span class="vsText">vs</span>
+                <img
+                  class="escudos"
+                  alt="Logo {{ partido.idEquipoVisitante.nombre }}"
+                />
+              </div>
+            </div>
+            <img
+              src="/img/fondo.png"
+              class="card-img-top"
+              alt="Imagen del partido"
+            />
+            <div class="card-body text-center">
+              <h3 class="card-title">
+                {{ partido.idEquipoLocal.nombre }} vs
+                {{ partido.idEquipoVisitante.nombre }}
+              </h3>
+              <p class="card-text">
+                <span class="badge bg-warning">PRÓXIMO</span>
+              </p>
+              <a
+                (click)="cambiarEstadoAEnVivo(partido.id)"
+                class="btn btn-danger"
+                >Definir En Vivo</a
+              >
+            </div>
+          </div>
+          <div class="po">
+            <p class="po">                                                                                                            .</p>
+          </div>
+        </div>
+
+      </div>
+
+      <ng-template #noPartidosPendientes>
+        <div class="text-center">
+          <h5>No hay partidos pendientes</h5>
+        </div>
+      </ng-template>
+    </div>
+
+</section>

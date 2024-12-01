@@ -1,0 +1,117 @@
+<div class="container mt-5">
+  <div *ngIf="successMessage" class="success-message message">
+    <p>{{ successMessage }} Serás redirigido en {{ counter }} segundos ...</p>
+  </div>
+  <div class="form-container contenedor">
+    <h2 class="form-title text-center titulo">
+      Ingresar Fondos al Monedero Virtual
+    </h2>
+    <form [formGroup]="billeteraForm" (ngSubmit)="handleSubmit()">
+      <div class="mb-3">
+        <label for="monto" class="form-label label">Monto</label>
+        <input
+          type="number"
+          class="form-control"
+          id="monto"
+          formControlName="monto"
+          placeholder="Ingrese el monto a ingresar"
+          min="0.01"
+          step="0.01"
+        />
+        <div *ngIf="billeteraForm.get('monto')?.invalid && billeteraForm.get('monto')?.touched" class="invalid-feedback invalido">
+          El monto debe ser mayor que 0.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="metodo" class="form-label label">Método de Pago</label>
+        <select
+          class="form-select"
+          id="metodo"
+          formControlName="metodo"
+          (change)="manejarCambioMetodo($event)"
+        >
+          <option value="" disabled>Seleccione un método de pago</option>
+          <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+          <option value="paypal">PayPal</option>
+          <option value="transferencia">Transferencia Bancaria</option>
+        </select>
+      </div>
+
+      <!-- Detalles para Tarjeta de Crédito/Débito -->
+      <div *ngIf="billeteraForm.get('metodo')?.value === 'tarjeta'" id="tarjeta">
+        <div class="mb-3">
+          <label for="numeroTarjeta" class="form-label label">Número de Tarjeta</label>
+          <input
+            type="text"
+            class="form-control"
+            id="numeroTarjeta"
+            formControlName="tarjeta.numeroTarjeta"
+            placeholder="Ingrese el número de tarjeta"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="fechaExpiracion" class="form-label label">Fecha de Expiración</label>
+          <input
+            type="month"
+            class="form-control"
+            id="fechaExpiracion"
+            formControlName="tarjeta.fechaExpiracion"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="cvv" class="form-label label">CVV</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cvv"
+            formControlName="tarjeta.cvv"
+            placeholder="Ingrese el CVV"
+          />
+        </div>
+      </div>
+
+      <!-- Detalles para PayPal -->
+      <div *ngIf="billeteraForm.get('metodo')?.value === 'paypal'" id="paypal">
+        <div class="mb-3">
+          <label for="emailPaypal" class="form-label label">Correo Electrónico de PayPal</label>
+          <input
+            type="email"
+            class="form-control"
+            id="emailPaypal"
+            formControlName="paypal.emailPaypal"
+            placeholder="Ingrese su correo de PayPal"
+          />
+        </div>
+      </div>
+
+      <!-- Detalles para Transferencia Bancaria -->
+      <div *ngIf="billeteraForm.get('metodo')?.value === 'transferencia'" id="transferencia">
+        <div class="mb-3">
+          <label for="banco" class="form-label label">Banco</label>
+          <input
+            type="text"
+            class="form-control"
+            id="banco"
+            formControlName="transferencia.banco"
+            placeholder="Ingrese el nombre del banco"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="numeroCuenta" class="form-label label">Número de Cuenta</label>
+          <input
+            type="text"
+            class="form-control"
+            id="numeroCuenta"
+            formControlName="transferencia.numeroCuenta"
+            placeholder="Ingrese el número de cuenta"
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block button">
+        Ingresar Fondos
+      </button>
+    </form>
+  </div>
+</div>
