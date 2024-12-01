@@ -147,3 +147,48 @@ a[disabled]{
   padding: 10px;
   background-color: #55555588;
 }
+.search-section {
+  text-align: center;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espacio entre el input y el botón */
+}
+
+.search-wrapper {
+  position: relative;
+  display: inline-block; /* Para que la lista se relacione solo con este contenedor */
+}
+
+.search-bar {
+  width: 300px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #d4ec00;
+  border-radius: 4px;
+}
+
+.autocomplete-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Coincide con el ancho del input */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  position: absolute;
+  top: 100%; /* Ubica debajo del input */
+  left: 0;
+  z-index: 1000;
+}
+
+.autocomplete-list li {
+  color: black;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f0f0f0;
+}

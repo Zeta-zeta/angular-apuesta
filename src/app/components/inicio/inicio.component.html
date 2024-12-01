@@ -47,6 +47,27 @@
 <!-- Partidos En vivo -->
 <section class="live-matches py-5">
   <div class="container">
+    <div class="search-section">
+      <!-- Contenedor del campo de texto y lista -->
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="search-bar"
+          class="search-bar"
+          placeholder="Busca un equipo"
+          (input)="filterEquipos($event)"
+          autocomplete="true"
+        />
+        <!-- Lista de sugerencias -->
+        <ul *ngIf="filteredEquipos.length > 0" class="autocomplete-list">
+          <li *ngFor="let equipo of filteredEquipos" (click)="selectEquipo(equipo)">
+            {{ equipo.nombre }}
+          </li>
+        </ul>
+      </div>
+      <!-- Botón listar partidos -->
+      <button class="btn btn-danger mx-2" (click)="filtrarPartidos()">Listar partidos</button>
+    </div>    
     <h2 class="text-center mb-4"><b>Partidos en Vivo</b></h2>
     <div class="row" *ngIf="partidosEnVivo.length>0; else noPartidosEnVivo">
       <div *ngFor="let partido of partidosEnVivo" class="col-md-4 mb-4">
