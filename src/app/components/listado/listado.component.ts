@@ -97,3 +97,4 @@ export class ListadoComponent implements OnInit {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || 'Fecha inválida';
   }
 }
+ 
