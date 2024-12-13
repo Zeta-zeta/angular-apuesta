@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="contenedor">
     <div class="carta">
-      <h2 class="title">Buscar Usuario</h2>
+      <h2 class="title">Buscar Apuesta</h2>
 
       <!-- Barra de búsqueda -->
       <div class="search-section">
@@ -11,12 +11,12 @@
             type="text"
             id="search-bar"
             class="input"
-            placeholder="Escribe el nombre del usuario..."
+            placeholder="Busca tu Apuesta"
             [(ngModel)]="searchQuery"
-            (input)="filterUsers($event)"
+            (input)="filterApuesta($event)"
             autocomplete="off"
             [disabled]="isInputDisabled"
-            aria-label="Buscar usuario"
+            aria-label="Buscar Apuesta"
           />
 
           <!-- Botón para resetear el filtro -->
@@ -25,35 +25,31 @@
           </button>
         </div>
 
-        <ul *ngIf="filteredUsers.length > 0 && searchQuery && !selectedUser" class="autocomplete-list" aria-live="polite">
-          <li *ngFor="let user of filteredUsers" (click)="selectUser(user)">
-            {{ user.nombre }} ({{ user.dni }}) <!-- Mostrar nombre y ID del usuario -->
+        <ul *ngIf="filteredApuesta.length > 0 && searchQuery && !selectedApuesta" class="autocomplete-list" aria-live="polite">
+          <li *ngFor="let apuesta of filteredApuesta" (click)="selectApuesta(apuesta)">
+          ({{ apuesta.fecha }})
           </li>
         </ul>
 
       </div>
 
       <!-- Tabla de usuarios (siempre visible) -->
-      <div *ngIf="!selectedUser || filteredUsers.length > 0">
+      <div *ngIf="!selectedApuesta || filteredApuesta.length > 0">
         <table class="user-table" >
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Dni</th>
-              <th>Correo</th>
-              <th>Fecha de Nacimiento</th>
-              <th>Fondos</th>
+              <th>ID Apuesta</th>
+              <th>Fecha</th>
+              <th>ID Equipo</th>
+              <th>Monto Apuesta</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of filteredUsers" (click)="selectUserFromTable(user)">
-              <td>{{ user.id }}</td>
-              <td>{{ user.nombre }}</td>
-              <td>{{ user.dni }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ formatDate(user.fechaNacimiento) }}</td>
-              <td>{{ user.fondos }}</td>
+            <tr *ngFor="let apuesta of filteredApuesta" (click)="selectApuestaFromTable(apuesta)">
+              <td>{{ apuesta.id }}</td>
+              <td>{{ apuesta.fecha }}</td>
+              <td>{{ apuesta.idEquipoApuesta }}</td>
+              <td>{{ apuesta.montoApuesta }}</td>
             </tr>
           </tbody>
         </table>

@@ -19,4 +19,8 @@ export class ApostarService {
   obtenerDetallesPartido(idPartido: number): Observable<any> {
     return this.http.get(`${this.apiUrlPartido}/${idPartido}`).pipe(res =>res);
   }
+
+  getApuestas(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }
