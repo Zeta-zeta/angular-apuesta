@@ -1,0 +1,59 @@
+<div class="main-container">
+  <div class="contenedor">
+    <div class="carta">
+      <h2 class="title">Buscar Apuesta</h2>
+
+      <!-- Barra de búsqueda -->
+      <div class="search-section">
+        <div class="search-input-container">
+          <input
+            type="text"
+            id="search-bar"
+            class="input"
+            placeholder="Escribe el ID de la apuesta..."
+            [(ngModel)]="searchQuery"
+            (input)="filterApuestas($event)"
+            autocomplete="off"
+            [disabled]="isInputDisabled"
+            aria-label="Buscar apuesta"
+          />
+
+          <!-- Botón para resetear el filtro -->
+          <button (click)="resetFilter()" class="button">
+            Limpiar filtro
+          </button>
+        </div>
+
+        <ul *ngIf="filteredApuestas.length > 0 && searchQuery && !selectedApuesta" class="autocomplete-list" aria-live="polite">
+          <li *ngFor="let apuesta of filteredApuestas" (click)="selectApuesta(apuesta)">
+            {{ apuesta.id }} <!-- Mostrar ID de la apuesta -->
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tabla de apuestas (siempre visible) -->
+      <div *ngIf="!selectedApuesta || filteredApuestas.length > 0">
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Equipo Local</th>
+              <th>Equipo Visitante</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let apuesta of filteredApuestas" (click)="selectApuestaFromTable(apuesta)">
+              <td>{{ apuesta.id }}</td>
+              <td>{{ apuesta.fecha }}</td>
+              <td>{{ apuesta.idPartido.idEquipoLocal.nombre }}</td>
+              <td>{{ apuesta.idPartido.idEquipoVisitante.nombre }}</td>
+              <td>{{ apuesta.resultado ? 'Ganada' : 'Perdida' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

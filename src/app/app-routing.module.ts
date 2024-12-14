@@ -13,7 +13,7 @@ import { PartidospendientesComponent } from './components/partidospendientes/par
 import { DefinirpartidoComponent } from './components/definirpartido/definirpartido.component';
 import { CrearequipoComponent } from './components/crearequipo/crearequipo.component';
 import { ListadoComponent } from './components/listado/listado.component';
-
+import { ListadoApuestasComponent } from './components/listado-apuestas/listado-apuestas.component';
 const routes: Routes = [
   {
     path: '',
@@ -62,6 +62,10 @@ const routes: Routes = [
   {
     path: 'listado',
     component:ListadoComponent
+  },
+  {
+    path: 'listadoApuestas',
+    component:ListadoApuestasComponent
   }
 
 ];

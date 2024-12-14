@@ -23,7 +23,7 @@
         type="text"
         class="input"
         id="search-bar"
-        autocomplete="off"
+        autocomplete=""
         placeholder="Buscar equipo..."
         (input)="filterEquipos($event)"
         [disabled]="isInputDisabled"
@@ -31,7 +31,7 @@
       />
       <button class="button" (click)="resetFilter()">Resetear</button>
     </div>
-    <ul *ngIf="filteredEquipos.length > 0 && searchQuerty && !selectedEquipo" class="autocomplete-list" aria-live="polite">
+    <ul class="autocomplete-list" *ngIf="searchQuerty.length > 0 && filteredEquipos.length > 0">
       <li *ngFor="let equipo of filteredEquipos" (click)="selectEquipo(equipo)">
         {{ equipo.nombre }}
       </li>
