@@ -14,6 +14,7 @@ import { DefinirpartidoComponent } from './components/definirpartido/definirpart
 import { CrearequipoComponent } from './components/crearequipo/crearequipo.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { ListadoApuestasComponent } from './components/listado-apuestas/listado-apuestas.component';
+import { ListadoPromocionesComponent } from './components/listadoPromociones/listadoPromociones.component';
 const routes: Routes = [
   {
     path: '',
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'listadoApuestas',
     component:ListadoApuestasComponent
+  },
+  {
+    path: 'listadoPromociones',
+    component:ListadoPromocionesComponent
   }
 
 ];

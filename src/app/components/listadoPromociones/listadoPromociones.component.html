@@ -1,0 +1,64 @@
+<div class="main-container">
+  <div class="contenedor">
+    <div class="carta">
+      <h2 class="title">Buscar Promociones</h2>
+
+      <!-- Barra de búsqueda -->
+      <div class="search-section">
+
+        <div class="search-input-container">
+          <input
+            type="text"
+            id="search-bar"
+            class="input"
+            placeholder="Escribe el codigo de Promocion..."
+            [(ngModel)]="searchQuery"
+            (input)="filterpromociones($event)"
+            autocomplete="off"
+            [disabled]="isInputDisabled"
+            aria-label="Buscar Promociones"
+          />
+
+          <!-- Botón para resetear el filtro -->
+          <button (click)="resetFilter()" class="button">
+            Limpiar filtro
+          </button>
+        </div>
+
+        <ul *ngIf="filteredPromociones.length > 0 && searchQuery && !selectedPromocion" class="autocomplete-list" aria-live="polite">
+          <li *ngFor="let promocion of filteredPromociones" (click)="selectUser(promocion)">
+            {{ promocion.codigoPromocion }} ({{ promocion.id }}) <!-- Mostrar nombre y ID de la Promocion -->
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Tabla de usuarios (siempre visible) -->
+      <div *ngIf="!selectedPromocion || filteredPromociones.length > 0">
+        <table class="user-table" >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tipo</th>
+              <th>Monto</th>
+              <th>Nombre</th>
+              <th>codigo</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let promocion of filteredPromociones" (click)="selectUserFromTable(promocion)">
+              <td>{{ promocion.id }}</td>
+              <td>{{ promocion.tipoPromocion }}</td>
+              <td>S/.{{ promocion.montoPromocion}}</td>
+              <td>{{ promocion.nombrePromocion }}</td>
+              <td>{{ promocion.codigoPromocion }}</td>
+              <td>{{ promocion.estadoPromocion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+ 
