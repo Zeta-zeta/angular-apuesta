@@ -16,6 +16,7 @@ export class InicioComponent implements OnInit{
   partidosEnVivo: Partido[] = [];
   partidosProximos: Partido[] = [];
   partidosTerminados: Partido[] = [];
+  searchQuery : String = '';
   listaEquipos: Equipo[] = []
   constructor(
     private inicioService: InicioService,
@@ -41,17 +42,17 @@ export class InicioComponent implements OnInit{
 
   filterEquipos(event: Event): void|Equipo {
     const input = event.target as HTMLInputElement; // Asegura que es un HTMLInputElement
-    const query = input.value; // Accede al valor
-    if (query.trim() === '') {
+    this.searchQuery = input.value.trim(); // Accede al valor
+    if (this.searchQuery.trim() === '') {
       this.filteredEquipos = [];
       return;
     }
     this.filteredEquipos = this.listaEquipos.filter(equipo =>
-      equipo.nombre.toLowerCase().includes(query.toLowerCase())
-    ); 
+      equipo.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
     return;
    }
-   
+
    selectEquipo(equipo: Equipo): void {
     this.partidosEnVivo = this.listaPartidos.filter(
       partido =>
@@ -65,7 +66,7 @@ export class InicioComponent implements OnInit{
       partido =>
         partido.idEquipoLocal.id === equipo.id && partido.estado === "Terminado" || partido.idEquipoVisitante.id === equipo.id && partido.estado === "Terminado"
     );
-  
+
   }
 
 
