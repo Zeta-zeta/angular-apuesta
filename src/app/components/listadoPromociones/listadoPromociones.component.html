@@ -27,7 +27,7 @@
 
         <ul *ngIf="filteredPromociones.length > 0 && searchQuery && !selectedPromocion" class="autocomplete-list" aria-live="polite">
           <li *ngFor="let promocion of filteredPromociones" (click)="selectUser(promocion)">
-            {{ promocion.codigoPromocion }} ({{ promocion.id }}) <!-- Mostrar nombre y ID de la Promocion -->
+            {{ promocion.codigoPromocion }} <!-- Mostrar nombre y ID de la Promocion -->
           </li>
         </ul>
 
@@ -61,4 +61,3 @@
     </div>
   </div>
 </div>
- 
