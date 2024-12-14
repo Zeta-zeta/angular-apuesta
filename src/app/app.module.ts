@@ -17,6 +17,7 @@ import { CrearequipoComponent } from './components/crearequipo/crearequipo.compo
 import { DefinirpartidoComponent } from './components/definirpartido/definirpartido.component';
 import { PartidospendientesComponent } from './components/partidospendientes/partidospendientes.component';
 import { ListadoComponent } from './components/listado/listado.component';
+import { ListadoPromocionesComponent } from './components/listadoPromociones/listadoPromociones.component';
 
 @NgModule({
   declarations: [

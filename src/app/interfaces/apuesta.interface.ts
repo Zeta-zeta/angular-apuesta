@@ -36,3 +36,13 @@ export interface Usuario {
   fondos: number
   roles: any[]
 }
+
+export interface Promocion {
+  id: number
+  tipoPromocion: string
+  montoPromocion: number
+  nombrePromocion: string
+  codigoPromocion: string
+  estadoPromocion: string
+}
+
