@@ -24,8 +24,8 @@ export class EquiposComponent implements OnInit{
   constructor(private equipoService: EquiposService){}
 
   ngOnInit(): void {
-      this.getEquipos()
       this.loadEquipos();
+      this.getEquipos();
   }
 
   getEquipos(): void{
@@ -40,7 +40,7 @@ export class EquiposComponent implements OnInit{
   }
 
   loadEquipos(): void{
-    this.equipoService.getEquipos().subscribe(
+    this.equipoService.getEquipo().subscribe(
       (equipos) =>{
         this.equipos = equipos;
         this.filteredEquipos = [...this.equipos];
@@ -50,6 +50,8 @@ export class EquiposComponent implements OnInit{
       }
     );
   }
+
+
 
   filterEquipos(event: Event): void{
     const input = event.target as HTMLInputElement;
@@ -65,6 +67,8 @@ export class EquiposComponent implements OnInit{
     );
   }
 
+
+
   selectEquipo(equipo: Equipo): void{
     this.selectedEquipo = equipo;
     this.searchQuerty= equipo.nombre;
@@ -72,12 +76,16 @@ export class EquiposComponent implements OnInit{
     this.isInputDisabled = true;
   }
 
+
+
   resetFilter(): void{
     this.selectedEquipo = null;
     this.searchQuerty = '';
     this.filteredEquipos = [...this.equipos];
     this.isInputDisabled = false;
   }
+
+
 
   selectEquipoFromTable(equipo: Equipo): void{
     this.selectedEquipo = equipo;

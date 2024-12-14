@@ -15,4 +15,8 @@ export class EquiposService {
   crearEquipo(equipoData: any): Observable<any> {
     return this.http.post(this.apiUrl, equipoData);
   }
+
+  getEquipo(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }

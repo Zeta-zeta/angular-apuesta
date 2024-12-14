@@ -59,6 +59,8 @@ export class ListadoComponent implements OnInit {
     )
   }
 
+
+
   // Método para seleccionar un usuario
   selectUser(user: Usuario): void {
     this.selectedUser = user; // Guardamos el usuario completo
@@ -97,4 +99,3 @@ export class ListadoComponent implements OnInit {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || 'Fecha inválida';
   }
 }
- 
