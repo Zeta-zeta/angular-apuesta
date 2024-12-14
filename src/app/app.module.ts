@@ -6,7 +6,6 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HistorialApuestasComponent } from './components/historial-apuestas/historial-apuestas.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
@@ -25,7 +24,6 @@ import { ListadoPromocionesComponent } from './components/listadoPromociones/lis
     InicioComponent,
     NavegacionComponent,
     FooterComponent,
-    HistorialApuestasComponent,
     RegistroComponent,
     LoginComponent,
     MiBilleteraComponent,
