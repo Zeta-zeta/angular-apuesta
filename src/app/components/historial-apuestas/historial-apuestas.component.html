@@ -1,6 +1,50 @@
 <div>
   <h1 class="titulo">Historial de Apuestas</h1>
   <div class="container mt-5">
+    <div class="containerTabla">
+      <div class="title">Historial de Apuestas</div>
+      <div class="search-input-container">
+        <input
+          type="text"
+          class="input"
+          id="search-bar"
+          placeholder="Buscar por fecha (aaaa-mm-dd)..."
+          (input)="filterApuestas($event)"
+          [disabled]="isInputDisabled"
+          [(ngModel)]="searchQuery"
+        />
+        <button class="button" (click)="resetFilter()">Resetear</button>
+      </div>
+      <ul class="autocomplete-list" *ngIf="searchQuery.length > 0 && suggestions.length > 0">
+        <li *ngFor="let apuesta of suggestions" (click)="selectSuggestion(apuesta)">
+          {{ apuesta.fecha }} - {{ apuesta.idPartido.idEquipoLocal.nombre }} vs {{ apuesta.idPartido.idEquipoVisitante.nombre }}
+        </li>
+      </ul>
+      <div *ngIf="filteredApuestas.length === 0" class="no-results">
+        No se encontraron resultados
+      </div>
+      <table class="user-table" *ngIf="filteredApuestas.length > 0">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Equipo Local</th>
+            <th>Equipo Visitante</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let apuesta of filteredApuestas" (click)="selectApuestaFromTable(apuesta)">
+            <td>{{ apuesta.fecha }}</td>
+            <td>{{ apuesta.idPartido.idEquipoLocal.nombre }}</td>
+            <td>{{ apuesta.idPartido.idEquipoVisitante.nombre }}</td>
+            <td>{{ apuesta.resultado ? 'Ganada' : 'Perdida' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
     <div class="apuestacont">
       <div *ngFor="let apuesta of listaApuestas" class="match-banner banner" [ngClass]="{
         'proximo-partido': apuesta.idPartido.estado === 'Proximo',
@@ -47,14 +91,12 @@
             <span class="match-result matchresult">
               <span class="resultado"><b>Equipo Apostado:</b> {{ apuesta.idEquipoApuesta === apuesta.idPartido.idEquipoLocal.id ? apuesta.idPartido.idEquipoLocal.nombre : apuesta.idPartido.idEquipoVisitante.nombre }}</span><br />
               <span class="resultado"><b>Estado de la Apuesta:</b> {{ apuesta.resultado ? 'Ganado' : 'Perdido' }}</span><br />
-
               <span class="resultado"><b>Monto Apostado:</b> s/{{ apuesta.montoApuesta }}</span><br />
-
               <span class="resultado">
                 <b>{{ apuesta.resultado ? 'Ganancia Total:' : 'Pérdida Total:' }}</b>
                 s/{{ apuesta.resultado ? apuesta.montoApuesta * 1.5 : -apuesta.montoApuesta }}
               </span><br />
-          </span>
+            </span>
           </div>
         </div>
 
@@ -87,7 +129,6 @@
           <div class="match-info mt-3 matchinfo">
             <span class="match-date matchdate">{{ apuesta.fecha }}</span>
             <span class="match-result matchresult">
-
               <span class="resultado"><b>Monto Apostado:</b> s/{{ apuesta.montoApuesta }}</span><br />
             </span>
           </div>

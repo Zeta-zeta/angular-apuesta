@@ -65,9 +65,9 @@ export class EquiposComponent implements OnInit{
     );
   }
 
-  selectEquipo(equipo: Equipo): void{
+  selectEquipo(equipo: Equipo): void {
     this.selectedEquipo = equipo;
-    this.searchQuerty= equipo.nombre;
+    this.searchQuerty = equipo.nombre;
     this.filteredEquipos = [equipo];
     this.isInputDisabled = true;
   }
