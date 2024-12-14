@@ -15,49 +15,55 @@
       </div>
     </div>
   </div>
-<div class = "tablecontainer">
-  <div class="contenedor">
-    <div class="title">Equipos</div>
-    <div class="search-input-container">
-      <input
-        type="text"
-        class="input"
-        id="search-bar"
-        autocomplete=""
-        placeholder="Buscar equipo..."
-        (input)="filterEquipos($event)"
-        [disabled]="isInputDisabled"
-        [(ngModel)]="searchQuerty"
-      />
-      <button class="button" (click)="resetFilter()">Resetear</button>
+
+  <div class="main-container">
+    <div class="contenedor">
+      <div class="carta">
+        <h2 class="title">Equipos</h2>
+        <div class="search-input-container">
+          <input
+            type="text"
+            class="input"
+            id="search-bar"
+            autocomplete="off"
+            placeholder="Buscar equipo..."
+            (input)="filterEquipos($event)"
+            [disabled]="isInputDisabled"
+            [(ngModel)]="searchQuerty"
+          />
+          <button class="button" (click)="resetFilter()">Resetear</button>
+        </div>
+        <ul *ngIf="filteredEquipos.length > 0 && searchQuerty && !selectedEquipo" class="autocomplete-list" aria-live="polite">
+          <li *ngFor="let equipo of filteredEquipos" (click)="selectEquipo(equipo)">
+            {{ equipo.nombre }}
+          </li>
+        </ul>
+        <div *ngIf="filteredEquipos.length === 0" class="no-results">
+          No se encontraron resultados
+        </div>
+        <table class="user-table" *ngIf="filteredEquipos.length > 0">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>País</th>
+              <th>Fundado</th>
+              <th>Presidente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let equipo of filteredEquipos" (click)="selectEquipoFromTable(equipo)">
+              <td>{{ equipo.nombre }}</td>
+              <td>{{ equipo.pais }}</td>
+              <td>{{ equipo.fechaFundacion }}</td>
+              <td>{{ equipo.presidente }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <ul class="autocomplete-list" *ngIf="searchQuerty.length > 0 && filteredEquipos.length > 0">
-      <li *ngFor="let equipo of filteredEquipos" (click)="selectEquipo(equipo)">
-        {{ equipo.nombre }}
-      </li>
-    </ul>
-    <div *ngIf="filteredEquipos.length === 0" class="no-results">
-      No se encontraron resultados
-    </div>
-    <table class="user-table" *ngIf="filteredEquipos.length > 0">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>País</th>
-          <th>Fundado</th>
-          <th>Presidente</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let equipo of filteredEquipos" (click)="selectEquipoFromTable(equipo)">
-          <td>{{ equipo.nombre }}</td>
-          <td>{{ equipo.pais }}</td>
-          <td>{{ equipo.fechaFundacion }}</td>
-          <td>{{ equipo.presidente }}</td>
-        </tr>
-      </tbody>
-    </table>
+
   </div>
+
 </div>
 
 
